@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.finalproject.controller.MainController">
+
+    <top>
+        <Label text="Car Rental System" styleClass="title" BorderPane.alignment="CENTER"/>
+    </top>
+
+    <center>
+        <TabPane>
+
+            <!-- CARS -->
+            <Tab text="Cars">
+                <BorderPane>
+                    <center>
+                        <TableView fx:id="carTable">
+                            <columns>
+                                <TableColumn fx:id="carIdCol" text="ID" prefWidth="60"/>
+                                <TableColumn fx:id="carBrandCol" text="Brand" prefWidth="140"/>
+                                <TableColumn fx:id="carModelCol" text="Model" prefWidth="140"/>
+                                <TableColumn fx:id="carYearCol" text="Year" prefWidth="80"/>
+                                <TableColumn fx:id="carPriceCol" text="Price/Day" prefWidth="100"/>
+                                <TableColumn fx:id="carStatusCol" text="Status" prefWidth="100"/>
+                            </columns>
+                        </TableView>
+                    </center>
+
+                    <bottom>
+                        <VBox spacing="8" styleClass="panel">
+                            <HBox spacing="8">
+                                <TextField fx:id="carBrandField" promptText="Brand"/>
+                                <TextField fx:id="carModelField" promptText="Model"/>
+                                <TextField fx:id="carYearField" promptText="Year"/>
+                                <TextField fx:id="carPriceField" promptText="Price per day"/>
+                                <Button text="Add" onAction="#addCar"/>
+                                <Button text="Delete" onAction="#deleteCar"/>
+                            </HBox>
+                            <Label text="Tip: select car + customer + dates -> Rentals tab to rent" />
+                        </VBox>
+                    </bottom>
+                </BorderPane>
+            </Tab>
+
+            <!-- CUSTOMERS -->
+            <Tab text="Customers">
+                <BorderPane>
+                    <center>
+                        <TableView fx:id="customerTable">
+                            <columns>
+                                <TableColumn fx:id="custIdCol" text="ID" prefWidth="60"/>
+                                <TableColumn fx:id="custNameCol" text="Full Name" prefWidth="220"/>
+                                <TableColumn fx:id="custPhoneCol" text="Phone" prefWidth="160"/>
+                            </columns>
+                        </TableView>
+                    </center>
+
+                    <bottom>
+                        <HBox spacing="8" styleClass="panel">
+                            <TextField fx:id="custNameField" promptText="Full name"/>
+                            <TextField fx:id="custPhoneField" promptText="Phone"/>
+                            <Button text="Add" onAction="#addCustomer"/>
+                            <Button text="Delete" onAction="#deleteCustomer"/>
+                        </HBox>
+                    </bottom>
+                </BorderPane>
+            </Tab>
+
+            <!-- RENTALS -->
+            <Tab text="Rentals">
+                <BorderPane>
+                    <top>
+                        <HBox spacing="8" styleClass="panel">
+                            <DatePicker fx:id="startDatePicker" promptText="Start date"/>
+                            <DatePicker fx:id="endDatePicker" promptText="End date"/>
+                            <Button text="Create Rental (use selected Car + Customer)" onAction="#createRental"/>
+                            <Button text="Delete Rental" onAction="#deleteRental"/>
+                        </HBox>
+                    </top>
+
+                    <center>
+                        <TableView fx:id="rentalTable">
+                            <columns>
+                                <TableColumn fx:id="rentIdCol" text="ID" prefWidth="60"/>
+                                <TableColumn fx:id="rentCarIdCol" text="Car ID" prefWidth="80"/>
+                                <TableColumn fx:id="rentCustIdCol" text="Customer ID" prefWidth="100"/>
+                                <TableColumn fx:id="rentStartCol" text="Start" prefWidth="120"/>
+                                <TableColumn fx:id="rentEndCol" text="End" prefWidth="120"/>
+                                <TableColumn fx:id="rentTotalCol" text="Total" prefWidth="120"/>
+                            </columns>
+                        </TableView>
+                    </center>
+                </BorderPane>
+            </Tab>
+
+        </TabPane>
+    </center>
+</BorderPane>
